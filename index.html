@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .asset {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .positive {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .neutral {
+            background-color: #f8d7da;
+            color: #856404;
+        }
+        .negative {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Asset Sentiment Analysis</h1>
+<div id="assetsContainer"></div>
+
+<script>
+    // List of assets
+    const assets = ['Asset A', 'Asset B', 'Asset C', 'Asset D', 'Asset E'];
+
+    // Sentiment categories
+    const sentiments = ['positive', 'neutral', 'negative'];
+
+    // Function to assign random sentiment to each asset
+    function assignSentiments() {
+        const container = document.getElementById('assetsContainer');
+        container.innerHTML = ''; // Clear existing content
+        assets.forEach(asset => {
+            const sentiment = sentiments[Math.floor(Math.random() * sentiments.length)];
+            const assetDiv = document.createElement('div');
+            assetDiv.classList.add('asset', sentiment);
+            assetDiv.innerHTML = `<strong>${asset}</strong>: ${sentiment.charAt(0).toUpperCase() + sentiment.slice(1)} sentiment`;
+            container.appendChild(assetDiv);
+        });
+    }
+
+    // Assign sentiments on page load
+    window.onload = assignSentiments;
+</script>
+
+</body>
+</html>
